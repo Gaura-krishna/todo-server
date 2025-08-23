@@ -3,7 +3,7 @@ const Todo = require("../models/todoSchema");
 // Valid statuses
 const validStatuses = ["Not Started", "Pending", "In Progress", "Completed"];
 
-// @desc Create Todo
+// Create Todo
 exports.createTodo = async (req, res) => {
   try {
     const { title, description, dueDate, currentStatus } = req.body;
@@ -26,7 +26,7 @@ exports.createTodo = async (req, res) => {
   }
 };
 
-// @desc Get User Todos
+// Get User Todos
 exports.getTodos = async (req, res) => {
   try {
     const todos = await Todo.find({ user: req.user.id }).sort({ createdAt: -1 });
@@ -36,7 +36,7 @@ exports.getTodos = async (req, res) => {
   }
 };
 
-// @desc Update Todo (all fields)
+// Update Todo 
 exports.updateTodo = async (req, res) => {
   try {
     const todo = await Todo.findOneAndUpdate(
@@ -53,7 +53,7 @@ exports.updateTodo = async (req, res) => {
   }
 };
 
-// @desc Delete Todo
+// Delete Todo
 exports.deleteTodo = async (req, res) => {
   try {
     const todo = await Todo.findOneAndDelete({ _id: req.params.id, user: req.user.id });
@@ -65,7 +65,7 @@ exports.deleteTodo = async (req, res) => {
   }
 };
 
-// @desc Toggle Complete/Incomplete
+// Toggle Todo for complete and incomplete
 exports.toggleComplete = async (req, res) => {
   try {
     const { isCompleted } = req.body;
@@ -87,7 +87,7 @@ exports.toggleComplete = async (req, res) => {
   }
 };
 
-// @desc Update Todo Status
+// Update Todo Status
 exports.updateTodoStatus = async (req, res) => {
   try {
     const { currentStatus } = req.body;
