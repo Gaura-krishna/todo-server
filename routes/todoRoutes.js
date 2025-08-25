@@ -12,7 +12,7 @@ const { protect } = require("../middleware/authMiddleware"); // if using auth
 
 const router = express.Router();
 
-router.post("/", createTodo);
+router.post("/",protect, createTodo);
 router.get("/", protect, getTodos);
 router.put("/:id",protect, updateTodo);
 router.delete("/:id",protect, deleteTodo);

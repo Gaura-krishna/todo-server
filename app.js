@@ -12,6 +12,13 @@ app.use(cors())
 // Middleware
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  next();
+});
+
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/todos", todoRoutes);
