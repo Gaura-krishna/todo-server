@@ -13,6 +13,11 @@ const corsOptions = {
   credentials: true,
 };
 
+// const corsOptions = {
+//   origin: "*",
+//   credentials: true, 
+// };
+
 app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
